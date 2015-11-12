@@ -1,6 +1,7 @@
 FROM php:5.6-apache
 
 RUN a2enmod rewrite
+RUN service apache2 restart
 
 COPY ./config/php.ini /usr/local/etc/php/
 COPY . /var/www/html/
