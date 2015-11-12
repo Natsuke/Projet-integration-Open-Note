@@ -48,9 +48,9 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = '10.0.42.13';
-$db['default']['username'] = 'mysqlclient';
-$db['default']['password'] = 'MjslMDP=42';
+$db['default']['hostname'] = getenv('MYSQL_PORT_3306_TCP_ADDR') . ":" . getenv('MYSQL_PORT_3306_TCP_PORT');
+$db['default']['username'] = 'root';
+$db['default']['password'] = '';
 $db['default']['database'] = 'Open-Note';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
