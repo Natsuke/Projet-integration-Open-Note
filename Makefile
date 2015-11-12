@@ -1,5 +1,6 @@
 
 PROJECT = open-note
+MYSQL = mysql
 
 start:
 	make clean
@@ -14,7 +15,8 @@ build:
 	docker build -t $(PROJECT) .
 
 run:
-	docker run -d --name $(PROJECT) --link mysql:mysql -p 3000:80 $(PROJECT)
+	docker run -d --name $(MYSQL) -p 3306:3306 $(MYSQL) || docker start $(MYSQL)
+	docker run -d --name $(PROJECT) --link $(MYSQL):$(MYSQL) -p 3000:80 $(PROJECT) || docker start $(PROJECT)
 
 log:
 	docker logs $(PROJECT)
