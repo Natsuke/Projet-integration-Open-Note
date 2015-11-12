@@ -1,6 +1,6 @@
-FROM tommylau/php-5.2
+FROM php:5.6-apache
 
-# RUN a2enmod rewrite
+RUN a2enmod rewrite
 
 COPY ./config/php.ini /usr/local/etc/php/
 COPY . /var/www/html/
