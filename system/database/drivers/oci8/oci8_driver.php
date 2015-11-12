@@ -77,7 +77,7 @@ class CI_DB_oci8_driver extends CI_DB {
 	 */
 	public function db_connect()
 	{
-		return @oci_connect($this->username, $this->password, $this->hostname, $this->char_set);
+		return oci_connect($this->username, $this->password, $this->hostname, $this->char_set);
 	}
 
 	// --------------------------------------------------------------------
@@ -90,7 +90,7 @@ class CI_DB_oci8_driver extends CI_DB {
 	 */
 	public function db_pconnect()
 	{
-		return @oci_pconnect($this->username, $this->password, $this->hostname, $this->char_set);
+		return oci_pconnect($this->username, $this->password, $this->hostname, $this->char_set);
 	}
 
 	// --------------------------------------------------------------------
@@ -169,7 +169,7 @@ class CI_DB_oci8_driver extends CI_DB {
 		$this->stmt_id = FALSE;
 		$this->_set_stmt_id($sql);
 		oci_set_prefetch($this->stmt_id, 1000);
-		return @oci_execute($this->stmt_id, $this->_commit);
+		return oci_execute($this->stmt_id, $this->_commit);
 	}
 
 	/**
@@ -426,7 +426,7 @@ class CI_DB_oci8_driver extends CI_DB {
 	 */
 	public function affected_rows()
 	{
-		return @oci_num_rows($this->stmt_id);
+		return oci_num_rows($this->stmt_id);
 	}
 
 	// --------------------------------------------------------------------
@@ -796,7 +796,7 @@ class CI_DB_oci8_driver extends CI_DB {
 	 */
 	protected function _close($conn_id)
 	{
-		@oci_close($conn_id);
+		oci_close($conn_id);
 	}
 
 

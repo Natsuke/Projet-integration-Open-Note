@@ -140,7 +140,7 @@ class CI_DB_mssql_driver extends CI_DB {
 	function _execute($sql)
 	{
 		$sql = $this->_prep_query($sql);
-		return @mssql_query($sql, $this->conn_id);
+		return mssql_query($sql, $this->conn_id);
 	}
 
 	// --------------------------------------------------------------------
@@ -287,7 +287,7 @@ class CI_DB_mssql_driver extends CI_DB {
 	 */
 	function affected_rows()
 	{
-		return @mssql_rows_affected($this->conn_id);
+		return mssql_rows_affected($this->conn_id);
 	}
 
 	// --------------------------------------------------------------------
@@ -656,7 +656,7 @@ class CI_DB_mssql_driver extends CI_DB {
 	 */
 	function _close($conn_id)
 	{
-		@mssql_close($conn_id);
+		mssql_close($conn_id);
 	}
 
 }

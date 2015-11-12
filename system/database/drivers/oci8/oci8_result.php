@@ -43,11 +43,11 @@ class CI_DB_oci8_result extends CI_DB_result {
 		if ($this->num_rows === 0 && count($this->result_array()) > 0)
 		{
 			$this->num_rows = count($this->result_array());
-			@oci_execute($this->stmt_id, OCI_DEFAULT);
+			oci_execute($this->stmt_id, OCI_DEFAULT);
 
 			if ($this->curs_id)
 			{
-				@oci_execute($this->curs_id, OCI_DEFAULT);
+				oci_execute($this->curs_id, OCI_DEFAULT);
 			}
 		}
 
@@ -64,7 +64,7 @@ class CI_DB_oci8_result extends CI_DB_result {
 	 */
 	public function num_fields()
 	{
-		$count = @oci_num_fields($this->stmt_id);
+		$count = oci_num_fields($this->stmt_id);
 
 		// if we used a limit we subtract it
 		if ($this->limit_used)
@@ -166,7 +166,7 @@ class CI_DB_oci8_result extends CI_DB_result {
 	protected function _fetch_object()
 	{
 		$id = ($this->curs_id) ? $this->curs_id : $this->stmt_id;
-		return @oci_fetch_object($id);
+		return oci_fetch_object($id);
 	}
 
 	// --------------------------------------------------------------------
