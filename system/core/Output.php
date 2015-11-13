@@ -477,7 +477,7 @@ class CI_Output {
 
 		$cache_path .= md5($uri);
 
-		if ( ! $fp = @fopen($cache_path, FOPEN_WRITE_CREATE_DESTRUCTIVE))
+		if ( ! $fp = fopen($cache_path, FOPEN_WRITE_CREATE_DESTRUCTIVE))
 		{
 			log_message('error', "Unable to write cache file: ".$cache_path);
 			return;
@@ -496,7 +496,7 @@ class CI_Output {
 			return;
 		}
 		fclose($fp);
-		@chmod($cache_path, FILE_WRITE_MODE);
+		chmod($cache_path, FILE_WRITE_MODE);
 
 		log_message('debug', "Cache file written: ".$cache_path);
 	}
@@ -522,12 +522,12 @@ class CI_Output {
 
 		$filepath = $cache_path.md5($uri);
 
-		if ( ! @file_exists($filepath))
+		if ( ! file_exists($filepath))
 		{
 			return FALSE;
 		}
 
-		if ( ! $fp = @fopen($filepath, FOPEN_READ))
+		if ( ! $fp = fopen($filepath, FOPEN_READ))
 		{
 			return FALSE;
 		}
@@ -554,7 +554,7 @@ class CI_Output {
 		{
 			if (is_really_writable($cache_path))
 			{
-				@unlink($filepath);
+				unlink($filepath);
 				log_message('debug', "Cache file has expired. File deleted");
 				return FALSE;
 			}
