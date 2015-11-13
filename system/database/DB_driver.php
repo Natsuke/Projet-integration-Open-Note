@@ -1121,7 +1121,7 @@ class CI_DB_driver {
 
 		if ( ! class_exists('CI_DB_Cache'))
 		{
-			if ( ! @include(BASEPATH.'database/DB_cache.php'))
+			if ( ! include(BASEPATH.'database/DB_cache.php'))
 			{
 				return $this->cache_off();
 			}
